@@ -19,8 +19,8 @@
   <depend>ros_gz_bridge</depend>
   <depend>xacro</depend>
   <depend>tf2_ros</depend>
-
-
+  
+  <exec_depend>robot_localization</exec_depend>
   <!-- 可选：Gazebo Harmonic 支持 -->
   <exec_depend>gz_sim</exec_depend>
 

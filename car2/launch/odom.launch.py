@@ -52,6 +52,13 @@ def generate_launch_description():
             'z': '0.65',
         }.items(),
     )
+    robot_localization_node = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        parameters=[os.path.join(pkg_share, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+    )
 
     return LaunchDescription([
         DeclareLaunchArgument(name='use_sim_time', default_value='True', description='Flag to enable use_sim_time'),
@@ -63,4 +70,5 @@ def generate_launch_description():
         gz_server,
         ros_gz_bridge,
         spawn_entity,
+        robot_localization_node,
     ])
