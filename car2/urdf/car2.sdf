@@ -1,0 +1,723 @@
+<sdf version='1.11' xmlns:xacro="http://ros.org/wiki/xacro">
+  <model name='car2'>
+
+  <!-- Define some commonly used inertial properties  -->
+    <xacro:macro name="box_inertia" params="m w h d">
+      <inertial>
+        <pose>0 0 0 ${pi/2} 0 ${pi/2}</pose>
+        <mass>${m}</mass>
+        <inertia>
+          <ixx>${(m/12) * (h*h + d*d)}</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>${(m/12) * (w*w + d*d)}</iyy>
+          <iyz>0.0</iyz>
+          <izz>${(m/12) * (w*w + h*h)}</izz>
+        </inertia>
+      </inertial>
+    </xacro:macro>
+
+    <link name='base_link'>
+      <inertial>
+        <pose>0.0053087999999999998 6.0390000000000003e-05 0.20369000000000001 0 0 0</pose>
+        <mass>10.782</mass>
+        <inertia>
+          <ixx>0.080478999999999995</ixx>
+          <ixy>0.00020744000000000001</ixy>
+          <ixz>0.0029973000000000001</ixz>
+          <iyy>0.062246000000000003</iyy>
+          <iyz>3.4096e-05</iyz>
+          <izz>0.13175999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='castwheel_joint' type='revolute'>
+      <pose relative_to='base_link'>0 -0.0012501000000000001 0.092499999999999999 1.7999000000000001 -0.42435000000000006 0.88249999999999984</pose>
+      <parent>base_link</parent>
+      <child>castwheel</child>
+      <axis>
+        <xyz>0.57887999999999995 -0.079327999999999996 0.81154000000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='castwheel'>
+      <pose relative_to='castwheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.063617999999999994 0.0087179000000000006 -0.089187000000000002 0 0 0</pose>
+        <mass>8.9511000000000003</mass>
+        <inertia>
+          <ixx>0.030634999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.030634999999999999</iyy>
+          <iyz>0</iyz>
+          <izz>0.030634999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='castwheel_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/castwheel.STL</uri>
+          </mesh>
+        </geometry>
+        <surface><friction><ode>
+          <mu>0.001</mu>
+          <mu2>0.001</mu2>
+        </ode></friction></surface>
+      </collision>
+      <visual name='castwheel_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/castwheel.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='joint1' type='revolute'>
+      <pose relative_to='base_link'>0 0 0.23499999999999999 0 0 0.011375</pose>
+      <parent>base_link</parent>
+      <child>link1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.1400000000000001</lower>
+          <upper>3.1400000000000001</upper>
+          <effort>50</effort>
+          <velocity>1.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link1'>
+      <pose relative_to='joint1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.020976999999999999 1.0815e-17 0.14999999999999999 0 0 0</pose>
+        <mass>7.0137999999999998</mass>
+        <inertia>
+          <ixx>0.07535</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.065313999999999997</iyy>
+          <iyz>0</iyz>
+          <izz>0.035458000000000003</izz>
+        </inertia>
+      </inertial>
+      <collision name='link1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link1.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link1.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 0.349999994</diffuse>
+          <ambient>1 1 1 0.349999994</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='joint2' type='prismatic'>
+      <pose relative_to='link1'>0 0 0.25 0 0 0</pose>
+      <parent>link1</parent>
+      <child>link2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.20000000000000001</lower>
+          <upper>0</upper>
+          <effort>10</effort>
+          <velocity>1.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link2'>
+      <pose relative_to='joint2'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.13517000000000001 2.2454e-16 0 0 0 0</pose>
+        <mass>1.2926</mass>
+        <inertia>
+          <ixx>0.0033046999999999998</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.012723999999999999</iyy>
+          <iyz>0</iyz>
+          <izz>0.012723999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='link2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link2.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link2.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 0.349999994</diffuse>
+          <ambient>1 1 1 0.349999994</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='joint3' type='prismatic'>
+      <pose relative_to='link2'>-0.29999999999999999 0 0 0 0 0</pose>
+      <parent>link2</parent>
+      <child>link3</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.26000000000000001</lower>
+          <upper>0</upper>
+          <effort>10</effort>
+          <velocity>1.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link3'>
+      <pose relative_to='joint3'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.094255000000000005 1.4008e-16 1.6652999999999999e-16 0 0 0</pose>
+        <mass>2.2879</mass>
+        <inertia>
+          <ixx>0.0027483</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.022648000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.022339999999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='link3_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link3.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link3.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 0.349999994</diffuse>
+          <ambient>1 1 1 0.349999994</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='joint4' type='revolute'>
+      <pose relative_to='link3'>-0.1216 0 0 0 0 0</pose>
+      <parent>link3</parent>
+      <child>link4</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-1.5700000000000001</lower>
+          <upper>1.5700000000000001</upper>
+          <effort>50</effort>
+          <velocity>1.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link4'>
+      <pose relative_to='joint4'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.076652999999999999 5.6378999999999999e-17 0 0 0 0</pose>
+        <mass>2.5617000000000001</mass>
+        <inertia>
+          <ixx>0.0037141000000000001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.023522999999999999</iyy>
+          <iyz>0</iyz>
+          <izz>0.022599000000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name='link4_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link4.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link4_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link4.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 0.349999994</diffuse>
+          <ambient>1 1 1 0.349999994</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='joint5' type='revolute'>
+      <pose relative_to='link4'>-0.25745000000000001 0 0 0 0 0</pose>
+      <parent>link4</parent>
+      <child>link5</child>
+      <axis>
+        <xyz>-1 0 0</xyz>
+        <limit>
+          <lower>-3.1400000000000001</lower>
+          <upper>3.1400000000000001</upper>
+          <effort>50</effort>
+          <velocity>1.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link5'>
+      <pose relative_to='joint5'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.023311999999999999 3.6429000000000002e-17 1.6652999999999999e-16 0 0 0</pose>
+        <mass>1.7726</mass>
+        <inertia>
+          <ixx>0.0086712000000000004</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0047610999999999999</iyy>
+          <iyz>1.3921e-06</iyz>
+          <izz>0.0050017999999999998</izz>
+        </inertia>
+      </inertial>
+      <collision name='link5_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link5.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link5_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/link5.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 0.349999994</diffuse>
+          <ambient>1 1 1 0.349999994</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='fin1' type='prismatic'>
+      <pose relative_to='link5'>-0.050000000000000003 0.076716000000000006 -0.00044365000000000002 -0.0057829000000000023 0 0</pose>
+      <parent>link5</parent>
+      <child>finger1</child>
+      <axis>
+        <xyz>0 0.99997999999999998 0.0057828999999999997</xyz>
+        <limit>
+          <lower>-0.050000000000000003</lower>
+          <upper>0</upper>
+          <effort>30</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='finger1'>
+      <pose relative_to='fin1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.043191 -0.0022228999999999999 1.6652999999999999e-16 0 0 0</pose>
+        <mass>0.097614000000000006</mass>
+        <inertia>
+          <ixx>3.3639000000000001e-05</ixx>
+          <ixy>-1.2089999999999999e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001198</iyy>
+          <iyz>0</iyz>
+          <izz>0.00011277000000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name='finger1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/finger1.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='finger1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/finger1.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 0.349999994</diffuse>
+          <ambient>1 1 1 0.349999994</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='fin2' type='prismatic'>
+      <pose relative_to='link5'>-0.050000000000000003 -0.077005000000000004 0.00044532000000000003 -0.0057829000000000023 0 0</pose>
+      <parent>link5</parent>
+      <child>finger2</child>
+      <axis>
+        <xyz>0 0.99997999999999998 0.0057828999999999997</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.050000000000000003</upper>
+          <effort>30</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='finger2'>
+      <pose relative_to='fin2'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.043191 0.0022228999999999999 2.1093999999999999e-15 0 0 0</pose>
+        <mass>0.097614000000000006</mass>
+        <inertia>
+          <ixx>3.3639000000000001e-05</ixx>
+          <ixy>1.2089999999999999e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001198</iyy>
+          <iyz>0</iyz>
+          <izz>0.00011277000000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name='finger2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/finger2.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='finger2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/finger2.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 0.349999994</diffuse>
+          <ambient>1 1 1 0.349999994</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='leftwheel_joint' type='revolute'>
+      <pose relative_to='base_link'>0.057271000000000002 -0.19936999999999999 0.14999999999999999 -1.5708 -0.10500999999999999 -3.1301999999999999</pose>
+      <parent>base_link</parent>
+      <child>leftwheel</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='leftwheel'>
+      <pose relative_to='leftwheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>6.2449999999999997e-17 3.8164000000000001e-17 0.024993999999999999 0 0 0</pose>
+        <mass>9.4472000000000005</mass>
+        <inertia>
+          <ixx>0.055640000000000002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.055640000000000002</iyy>
+          <iyz>0</iyz>
+          <izz>0.10734</izz>
+        </inertia>
+      </inertial>
+      <collision name='leftwheel_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/leftwheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='leftwheel_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/leftwheel.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='rightwheel_joint' type='revolute'>
+      <pose relative_to='base_link'>0.052720999999999997 0.20061999999999999 0.14999999999999999 -1.5707999999999995 0.93928000000000056 -3.1301999999999999</pose>
+      <parent>base_link</parent>
+      <child>rightwheel</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rightwheel'>
+      <pose relative_to='rightwheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-4.1633e-17 8.3267000000000005e-17 -0.024993999999999999 0 0 0</pose>
+        <mass>9.4472000000000005</mass>
+        <inertia>
+          <ixx>0.055640000000000002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.055640000000000002</iyy>
+          <iyz>0</iyz>
+          <izz>0.10734</izz>
+        </inertia>
+      </inertial>
+      <collision name='rightwheel_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/rightwheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='rightwheel_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>package://car2/meshes/rightwheel.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='imu_joint' type='fixed'>
+  <parent>base_link</parent>
+  <child>imu_link</child>
+  <pose relative_to="base_link">0.0 0.0 0.7 0 0 0</pose>
+</joint>
+
+<link name='imu_link'>
+  <pose relative_to="imu_joint"/>
+  <visual name="imu_link_visual">
+    <geometry>
+      <box><size>
+        0.01 0.01 0.01
+      </size></box>
+    </geometry>
+  </visual>
+
+  <collision name="imu_link_collision">
+    <geometry>
+      <box><size>
+        0.01 0.01 0.01
+      </size></box>
+    </geometry>
+  </collision>
+
+  <xacro:box_inertia m="0.01" w="0.01" d="0.01" h="0.01"/>
+
+  <sensor name="imu_sensor" type="imu">
+    <always_on>true</always_on>
+    <update_rate>100</update_rate>
+    <visualize>true</visualize>
+    <topic>demo/imu</topic>
+    <gz_frame_id>imu_link</gz_frame_id>
+    <imu>
+      <angular_velocity>
+        <x>
+          <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>2e-4</stddev>
+            <bias_mean>0.0000075</bias_mean>
+            <bias_stddev>0.0000008</bias_stddev>
+          </noise>
+        </x>
+        <y>
+          <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>2e-4</stddev>
+            <bias_mean>0.0000075</bias_mean>
+            <bias_stddev>0.0000008</bias_stddev>
+          </noise>
+        </y>
+        <z>
+          <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>2e-4</stddev>
+            <bias_mean>0.0000075</bias_mean>
+            <bias_stddev>0.0000008</bias_stddev>
+          </noise>
+        </z>
+      </angular_velocity>
+      <linear_acceleration>
+        <x>
+          <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.1</bias_mean>
+            <bias_stddev>0.001</bias_stddev>
+          </noise>
+        </x>
+        <y>
+          <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.1</bias_mean>
+            <bias_stddev>0.001</bias_stddev>
+          </noise>
+        </y>
+        <z>
+          <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.1</bias_mean>
+            <bias_stddev>0.001</bias_stddev>
+          </noise>
+        </z>
+      </linear_acceleration>
+    </imu>
+  </sensor>
+</link>
+
+<plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+  <!-- wheels -->
+  <left_joint>leftwheel_joint</left_joint>
+  <right_joint>rightwheel_joint</right_joint>
+
+  <!-- kinematics -->
+  <wheel_separation>0.45</wheel_separation>
+  <wheel_radius>0.15</wheel_radius>
+
+  <!-- limits -->
+  <max_linear_acceleration>0.1</max_linear_acceleration>
+
+  <!-- input -->
+  <topic>/demo/cmd_vel</topic>
+
+  <!-- output -->
+  <odom_topic>/demo/odom</odom_topic>
+  <tf_topic>/tf</tf_topic>
+
+  <frame_id>odom</frame_id>
+  <child_frame_id>base_link</child_frame_id>
+</plugin>
+
+<plugin
+  filename="gz-sim-joint-state-publisher-system"
+  name="gz::sim::systems::JointStatePublisher">
+  <topic>joint_states</topic>
+</plugin>
+
+  </model>
+</sdf>

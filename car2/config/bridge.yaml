@@ -1,17 +1,39 @@
-# car2/config/bridge.yaml
-# Bridge joint command & state for fin1, fin2
+---
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
 
-- topic_name: "/model/car2/joint/fin1/cmd_pos"
-  ros_topic_name: "/car2/fin1/command"
-  ros_type_name: "std_msgs/msg/Float64"
-  direction: ROS_TO_GZ
+- ros_topic_name: "/demo/imu"
+  gz_topic_name: "/demo/imu"
+  ros_type_name: "sensor_msgs/msg/Imu"
+  gz_type_name: "gz.msgs.IMU"
+  direction: GZ_TO_ROS
 
-- topic_name: "/model/car2/joint/fin2/cmd_pos"
-  ros_topic_name: "/car2/fin2/command"
-  ros_type_name: "std_msgs/msg/Float64"
-  direction: ROS_TO_GZ
+# Topic published by DiffDrive plugin
+- ros_topic_name: "/demo/odom"
+  gz_topic_name: "/demo/odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
 
-- topic_name: "/model/car2/joint_state"
-  ros_topic_name: "/joint_states"
+# Topic published by JointStatePublisher plugin
+- ros_topic_name: "/joint_states"
+  gz_topic_name: "/joint_states"
   ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "gz.msgs.Model"
+  direction: GZ_TO_ROS
+
+# Topic subscribed to by DiffDrive plugin
+- ros_topic_name: "/demo/cmd_vel"
+  gz_topic_name: "/demo/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/TwistStamped"
+  gz_type_name: "gz.msgs.Twist"
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "/tf"
+  gz_topic_name: "/tf"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
   direction: GZ_TO_ROS
