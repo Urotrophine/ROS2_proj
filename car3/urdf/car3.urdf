@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="car3">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0053088 6.039E-05 0.20369"
+        rpy="0 0 0" />
+      <mass
+        value="10.782" />
+      <inertia
+        ixx="0.080479"
+        ixy="0.00020744"
+        ixz="0.0029973"
+        iyy="0.062246"
+        iyz="3.4096E-05"
+        izz="0.13176" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="castwheel">
+    <inertial>
+      <origin
+        xyz="-0.063618 0.0087179 -0.089187"
+        rpy="0 0 0" />
+      <mass
+        value="8.9511" />
+      <inertia
+        ixx="0.030635"
+        ixy="0"
+        ixz="0"
+        iyy="0.030635"
+        iyz="0"
+        izz="0.030635" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/castwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/castwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="castwheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0012501 0.0925"
+      rpy="1.7999 -0.42435 0.8825" />
+    <parent
+      link="base_link" />
+    <child
+      link="castwheel" />
+    <axis
+      xyz="0.57888 -0.079328 0.81154" />
+  </joint>
+  <link
+    name="leftwheel">
+    <inertial>
+      <origin
+        xyz="6.245E-17 3.8164E-17 0.024994"
+        rpy="0 0 0" />
+      <mass
+        value="9.4472" />
+      <inertia
+        ixx="0.05564"
+        ixy="0"
+        ixz="0"
+        iyy="0.05564"
+        iyz="0"
+        izz="0.10734" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/leftwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/leftwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftwheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.057271 -0.19937 0.15"
+      rpy="-1.5708 -0.10501 -3.1302" />
+    <parent
+      link="base_link" />
+    <child
+      link="leftwheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="rightwheel">
+    <inertial>
+      <origin
+        xyz="-4.1633E-17 8.3267E-17 -0.024994"
+        rpy="0 0 0" />
+      <mass
+        value="9.4472" />
+      <inertia
+        ixx="0.05564"
+        ixy="0"
+        ixz="0"
+        iyy="0.05564"
+        iyz="0"
+        izz="0.10734" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/rightwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/rightwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightwheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.052721 0.20062 0.15"
+      rpy="-1.5708 0.93928 -3.1302" />
+    <parent
+      link="base_link" />
+    <child
+      link="rightwheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="0.020977 1.0815E-17 0.15"
+        rpy="0 0 0" />
+      <mass
+        value="7.0138" />
+      <inertia
+        ixx="0.07535"
+        ixy="0"
+        ixz="0"
+        iyy="0.065314"
+        iyz="0"
+        izz="0.035458" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.235"
+      rpy="0 0 0.011375" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="50"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="-0.13517 2.2454E-16 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.2926" />
+      <inertia
+        ixx="0.0033047"
+        ixy="0"
+        ixz="0"
+        iyy="0.012724"
+        iyz="0"
+        izz="0.012724" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="prismatic">
+    <origin
+      xyz="0 0 0.25"
+      rpy="0 0 0" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.2"
+      upper="0"
+      effort="10"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="0.094255 1.4008E-16 1.6653E-16"
+        rpy="0 0 0" />
+      <mass
+        value="2.2879" />
+      <inertia
+        ixx="0.0027483"
+        ixy="0"
+        ixz="0"
+        iyy="0.022648"
+        iyz="0"
+        izz="0.02234" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="prismatic">
+    <origin
+      xyz="-0.3 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link2" />
+    <child
+      link="link3" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.26"
+      upper="0"
+      effort="10"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="-0.076653 5.6379E-17 0"
+        rpy="0 0 0" />
+      <mass
+        value="2.5617" />
+      <inertia
+        ixx="0.0037141"
+        ixy="0"
+        ixz="0"
+        iyy="0.023523"
+        iyz="0"
+        izz="0.022599" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="-0.1216 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="50"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="-0.023312 3.6429E-17 1.6653E-16"
+        rpy="0 0 0" />
+      <mass
+        value="1.7726" />
+      <inertia
+        ixx="0.0086712"
+        ixy="0"
+        ixz="0"
+        iyy="0.0047611"
+        iyz="1.3921E-06"
+        izz="0.0050018" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="revolute">
+    <origin
+      xyz="-0.25745 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link4" />
+    <child
+      link="link5" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="50"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="finger1">
+    <inertial>
+      <origin
+        xyz="-0.043191 -0.0022229 1.6653E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.097614" />
+      <inertia
+        ixx="3.3639E-05"
+        ixy="-1.209E-05"
+        ixz="0"
+        iyy="0.0001198"
+        iyz="0"
+        izz="0.00011277" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/finger1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/finger1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fin1"
+    type="prismatic">
+    <origin
+      xyz="-0.05 0.076716 -0.00044365"
+      rpy="-0.0057829 0 0" />
+    <parent
+      link="link5" />
+    <child
+      link="finger1" />
+    <axis
+      xyz="0 0.99998 0.0057829" />
+    <limit
+      lower="-0.05"
+      upper="0"
+      effort="30"
+      velocity="1.0" />
+  </joint>
+  <link
+    name="finger2">
+    <inertial>
+      <origin
+        xyz="-0.043191 0.0022229 2.1094E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.097614" />
+      <inertia
+        ixx="3.3639E-05"
+        ixy="1.209E-05"
+        ixz="0"
+        iyy="0.0001198"
+        iyz="0"
+        izz="0.00011277" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/finger2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car3/meshes/finger2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fin2"
+    type="prismatic">
+    <origin
+      xyz="-0.05 -0.077005 0.00044532"
+      rpy="-0.0057829 0 0" />
+    <parent
+      link="link5" />
+    <child
+      link="finger2" />
+    <axis
+      xyz="0 0.99998 0.0057829" />
+    <limit
+      lower="0"
+      upper="0.05"
+      effort="30"
+      velocity="1.0" />
+  </joint>
+</robot>
