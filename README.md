@@ -5,11 +5,10 @@ source install/setup.bash
 ros2 launch car2 odom.launch.py
 ``` 
 
-//open a new terminal 
+//open a new terminal ***(VERY IMPORTANT, PLEASE REMEMBER TO DO THIS!!!)***
 ```
 ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map odom
 ```
-***(VERY IMPORTANT, PLEASE REMEMBER TO DO THIS!!!)***
 
 //open a new terminal  
 ```
