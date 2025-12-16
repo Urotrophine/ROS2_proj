@@ -744,7 +744,7 @@
 <joint name="lidar_joint" type="fixed">
   <parent>base_link</parent>
   <child>lidar_link</child>
-  <pose relative_to="base_link">0.01 0.0 0.1 0 0 0</pose>
+  <pose relative_to="base_link">-0.175 0.0 0.20 0 0 0</pose>
 </joint>
 
 <link name='lidar_link'>
