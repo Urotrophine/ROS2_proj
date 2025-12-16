@@ -2,7 +2,7 @@ Please focus on the "odom.launch.py" file in the "launch" directory, because nav
 ```
 colcon build
 source install/setup.bash
-ros2 launch car2 odom.launch.py
+ros2 launch car2 odom.launch.py use_sim_time:=true
 ``` 
 
 //open a new terminal ***(VERY IMPORTANT, PLEASE REMEMBER TO DO THIS!!!)***
