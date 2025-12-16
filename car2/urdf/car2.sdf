@@ -31,8 +31,8 @@
         </inertia>
       </inertial>
     </xacro:macro>
-
     <link name='base_link'>
+      <must_be_base_link>true</must_be_base_link>
       <inertial>
         <pose>0.0053087999999999998 6.0390000000000003e-05 0.20369000000000001 0 0 0</pose>
         <mass>10.782</mass>
@@ -68,6 +68,13 @@
         </material>
       </visual>
     </link>
+    <link name='base_footprint'/>
+
+    <joint name='base_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>base_footprint</child>
+      <pose relative_to="base_link">0.0 0.0 -0.15 0 0 0</pose>
+    </joint>
     <joint name='castwheel_joint' type='revolute'>
       <pose relative_to='base_link'>0 -0.0012501000000000001 0.092499999999999999 1.7999000000000001 -0.42435000000000006 0.88249999999999984</pose>
       <parent>base_link</parent>
