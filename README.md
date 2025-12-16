@@ -12,7 +12,7 @@ ros2 launch nav2_bringup navigation_launch.py params_file:=<full/path/to/config/
 
 Then open a new terminal  
 ```
-ros2 launch slam_toolbox online_async_launch.py
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
 ```
 **Then you should change your "fixed frame" in rviz into "map"**
 
