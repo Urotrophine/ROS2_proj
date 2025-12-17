@@ -4,14 +4,6 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="car2">
-  <link name="base_footprint"/>
-
-  <joint name="base_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base_footprint"/>
-    <origin xyz="0.0 0.0 -0.15" rpy="0 0 0"/>
-  </joint>
-  
   <link
     name="base_link">
     <inertial>
@@ -52,6 +44,13 @@
       </geometry>
     </collision>
   </link>
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0.0 0.0 -0.15" rpy="0 0 0"/>
+  </joint>
   <link
     name="castwheel">
     <inertial>
@@ -251,14 +250,22 @@
       </geometry>
     </collision>
   </link>
+  <link name="arm_base_link"/>
+
+  <joint name="arm_base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_base_link"/>
+    <!-- 与 joint1 原来的 origin 对齐 -->
+    <origin xyz="0 0 0.235" rpy="0 0 0"/>
+  </joint>
   <joint
     name="joint1"
     type="revolute">
     <origin
-      xyz="0 0 0.235"
+      xyz="0 0 0"
       rpy="0 0 0.011375" />
     <parent
-      link="base_link" />
+      link="arm_base_link" />
     <child
       link="link1" />
     <axis
@@ -616,6 +623,7 @@
       upper="0.05"
       effort="30"
       velocity="1.0" />
+    <mimic joint="fin1" multiplier="-1" offset="0"/>
   </joint>
 
 </robot>
