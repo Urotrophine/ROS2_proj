@@ -10,12 +10,12 @@ default_acceleration_scaling_factor: 0.1
 joint_limits:
   fin1:
     has_velocity_limits: true
-    max_velocity: 1
+    max_velocity: 1.0
     has_acceleration_limits: false
     max_acceleration: 0
   fin2:
     has_velocity_limits: true
-    max_velocity: 1
+    max_velocity: 1.0
     has_acceleration_limits: false
     max_acceleration: 0
   joint1:

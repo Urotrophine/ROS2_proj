@@ -5,9 +5,9 @@ moveit_setup_assistant_config:
   srdf:
     relative_path: config/car2.srdf
   package_settings:
-    author_name: ""
-    author_email: ""
-    generated_timestamp: 1766041144
+    author_name: qzk
+    author_email: 12411402@mail.sustech.edu.cn
+    generated_timestamp: 1766052541
   control_xacro:
     command:
       - position
