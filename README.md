@@ -15,7 +15,7 @@ ros2 run tf2_ros static_transform_publisher   0 0 0 0 0 0 map odom use_sim_time:
 
 open a new terminal:  
 ```
-ros2 launch nav2_bringup localization_launch.py map:=<full/path/to/maps/map.yaml> use_sim_time:=true\
+ros2 launch nav2_bringup localization_launch.py map:=<full/path/to/maps/map.yaml> use_sim_time:=true
 params_file:=<full/path/to/config/nav2_params.yaml>
 ```
 ***After doing this, don't forget to kill the running static tf you created above!!!***
